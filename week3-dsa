@@ -1,0 +1,687 @@
+#include <iostream>
+#include <chrono>
+#include <cstdlib>
+#include <ctime>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+using namespace std::chrono;
+
+// S1 P1
+
+// int arraySum(int A[], int n){
+//     int sum = 0;
+//
+//     for (int i = 0; i < n; i++){
+//         sum += A[i];
+//     }
+//     return sum;
+// }
+//
+// int main(){
+//     srand(time(0));
+//     int n;
+//
+//     cout << "Enter the value of n: ";
+//     cin >> n;
+//
+//     int* A = new int[n];
+//
+//     for (int i = 0; i < n; i++){
+//         A[i] = rand();
+//     }
+//
+//     auto start = high_resolution_clock::now();
+//     int sum = arraySum(A, n);
+//     auto stop = high_resolution_clock::now();
+//     auto duration = duration_cast<microseconds>(stop - start);
+//
+//     cout << "n = " << n << endl;
+//     cout << "Time = " << duration.count()
+//          << " microseconds" << endl;
+//
+//     delete[] A;
+//
+//     return 0;
+// }
+
+
+// S2 P2
+
+// int linearSearch(int A[], int n, int target){
+//     for (int i = 0; i < n; i++){
+//         if (A[i] == target)
+//             return i;
+//     }
+//     return -1;
+// }
+//
+// int main(){
+//     int n;
+//
+//     cout << "Enter n: ";
+//     cin >> n;
+//
+//     int* A = new int[n];
+//
+//     for (int i = 0; i < n; i++){
+//         A[i] = i;
+//     }
+//
+//     //Best case
+//     auto startBest = high_resolution_clock::now();
+//     linearSearch(A, n, A[0]);
+//     auto stopBest = high_resolution_clock::now();
+//     auto bestTime =
+//         duration_cast<microseconds>(stopBest - startBest);
+//
+//
+//     //Average case
+//     auto startAverage = high_resolution_clock::now();
+//     linearSearch(A, n, A[n / 2]);
+//     auto stopAverage = high_resolution_clock::now();
+//     auto averageTime =
+//         duration_cast<microseconds>(stopAverage - startAverage);
+//
+//
+//     //Worst case
+//     auto startWorst = high_resolution_clock::now();
+//     linearSearch(A, n, -1);
+//     auto stopWorst = high_resolution_clock::now();
+//     auto worstTime =
+//         duration_cast<microseconds>(stopWorst - startWorst);
+//
+//
+//     cout << "n = " << n << endl;
+//
+//     cout << "Best case: "
+//          << bestTime.count()
+//          << " microseconds" << endl;
+//
+//     cout << "Average case: "
+//          << averageTime.count()
+//          << " microseconds" << endl;
+//
+//     cout << "Worst case: "
+//          << worstTime.count()
+//          << " microseconds" << endl;
+//
+//     delete[] A;
+//
+//     return 0;
+// }
+
+
+//S1 P3
+
+// void bubbleSort(int A[], int n){
+//
+//     for (int i = 0; i < n - 1; i++){
+//         for (int j = 0; j < n - i - 1; j++){
+//             if (A[j] > A[j + 1]){
+//                 int temp = A[j];
+//                 A[j] = A[j + 1];
+//                 A[j + 1] = temp;
+//             }
+//         }
+//     }
+// }
+//
+// int main(){
+//     int n;
+//
+//     cout << "Enter n: ";
+//     cin >> n;
+//
+//     int* A = new int[n];
+//
+//     srand(time(0));
+//
+//     for (int i = 0; i < n; i++){
+//         A[i] = rand();
+//     }
+//
+//     auto start = high_resolution_clock::now();
+//     bubbleSort(A, n);
+//     auto stop = high_resolution_clock::now();
+//     auto duration =
+//         duration_cast<microseconds>(stop - start);
+//
+//
+//     cout << "n = " << n << endl;
+//     cout << "Time = "
+//          << duration.count()
+//          << " microseconds" << endl;
+//
+//     delete[] A;
+//
+//     return 0;
+// }
+
+
+// S1 P4
+
+// int main(){
+//     int n;
+//
+//     cout << "Enter n: ";
+//     cin >> n;
+//
+//     //Static array
+//     auto startStatic = high_resolution_clock::now();
+//     int* staticArray = new int[n];
+//
+//     for (int i = 0; i < n; i++){
+//         staticArray[i] = i;
+//     }
+//
+//     auto stopStatic = high_resolution_clock::now();
+//     auto staticTime =
+//         duration_cast<microseconds>(stopStatic - startStatic);
+//
+//
+//     //Dynamic array
+//     auto startDynamic = high_resolution_clock::now();
+//     int* dynamicArray = new int[n];
+//
+//     for (int i = 0; i < n; i++){
+//         dynamicArray[i] = i;
+//     }
+//
+//     auto stopDynamic = high_resolution_clock::now();
+//     auto dynamicTime =
+//         duration_cast<microseconds>(stopDynamic - startDynamic);
+//
+//
+//
+//     cout << "n = " << n << endl;
+//
+//     cout << "Static array time: "
+//          << staticTime.count()
+//          << " microseconds" << endl;
+//
+//     cout << "Dynamic array time: "
+//          << dynamicTime.count()
+//          << " microseconds" << endl;
+//
+//
+//     cout << "Array memory: approximately "
+//          << n * sizeof(int)
+//          << " bytes" << endl;
+//
+//
+//     delete[] staticArray;
+//     delete[] dynamicArray;
+//
+//     return 0;
+// }
+
+
+// S1 P5
+
+// int main(){
+//     int n;
+//
+//     cout << "Enter n: ";
+//     cin >> n;
+//
+//
+//     //Push back only
+//     vector<int> v1;
+//
+//     auto start1 = high_resolution_clock::now();
+//
+//     for (int i = 0; i < n; i++){
+//         v1.push_back(i);
+//     }
+//
+//     auto stop1 = high_resolution_clock::now();
+//     auto time1 =
+//         duration_cast<microseconds>(stop1 - start1);
+//
+//
+//     //Reserve + push back
+//     vector<int> v2;
+//
+//     v2.reserve(n);
+//
+//     auto start2 = high_resolution_clock::now();
+//
+//     for (int i = 0; i < n; i++){
+//         v2.push_back(i);
+//     }
+//
+//     auto stop2 = high_resolution_clock::now();
+//     auto time2 =
+//         duration_cast<microseconds>(stop2 - start2);
+//
+//
+//     //Capacity jumps
+//     vector<int> v3;
+//
+//     int previousCapacity = v3.capacity();
+//     int capacityJumps = 0;
+//
+//     for (int i = 0; i < n; i++){
+//         v3.push_back(i);
+//
+//         if (v3.capacity() != previousCapacity){
+//             previousCapacity = v3.capacity();
+//             capacityJumps++;
+//         }
+//     }
+//
+//     cout << "n = " << n << endl;
+//
+//     cout << "Push_back only: "
+//          << time1.count()
+//          << " microseconds" << endl;
+//
+//     cout << "Reserve + push_back: "
+//          << time2.count()
+//          << " microseconds" << endl;
+//
+//     cout << "Capacity jumps observed: "
+//          << capacityJumps
+//          << endl;
+//
+//
+//     return 0;
+// }
+
+
+//S2 P1
+
+// void bubbleSort(int A[], int n){
+//     for (int i = 0; i < n - 1; i++){
+//         for (int j = 0; j < n - i - 1; j++){
+//             if (A[j] > A[j + 1]){
+//                 int temp = A[j];
+//                 A[j] = A[j + 1];
+//                 A[j + 1] = temp;
+//             }
+//         }
+//     }
+// }
+//
+// int main(){
+//     int n;
+//
+//     cout << "Enter n: ";
+//     cin >> n;
+//
+//     srand(time(0));
+//
+//     int* A = new int[n];
+//     int* B = new int[n];
+//
+//     for (int i = 0; i < n; i++){
+//         A[i] = rand();
+//         B[i] = A[i];
+//     }
+//
+//
+//     auto startBubble = high_resolution_clock::now();
+//     bubbleSort(A, n);
+//     auto stopBubble = high_resolution_clock::now();
+//     auto bubbleTime =
+//         duration_cast<microseconds>(
+//             stopBubble - startBubble
+//         );
+//
+//
+//
+//     auto startStd = high_resolution_clock::now();
+//     sort(B, B + n);
+//     auto stopStd = high_resolution_clock::now();
+//     auto stdTime =
+//         duration_cast<microseconds>(
+//             stopStd - startStd
+//         );
+//
+//
+//
+//     double ratio;
+//
+//     if (stdTime.count() != 0){
+//         ratio = (double)bubbleTime.count()
+//                 / stdTime.count();
+//     }
+//     else{
+//         ratio = 0;
+//     }
+//
+//
+//     cout << "n = " << n << endl;
+//
+//     cout << "Bubble Sort: "
+//          << bubbleTime.count()
+//          << " microseconds" << endl;
+//
+//     cout << "std::sort: "
+//          << stdTime.count()
+//          << " microseconds" << endl;
+//
+//     cout << "Ratio: " << ratio << endl;
+//
+//
+//     delete[] A;
+//     delete[] B;
+//
+//     return 0;
+// }
+
+
+// S2 P2
+
+// int main(){
+//     int n;
+//
+//     cout << "Enter matrix size n: ";
+//     cin >> n;
+//
+//     vector<vector<int>> A(n, vector<int>(n, 1));
+//     vector<vector<int>> B(n, vector<int>(n, 1));
+//     vector<vector<int>> C(n, vector<int>(n, 0));
+//
+//
+//     auto start = high_resolution_clock::now();
+//     for (int i = 0; i < n; i++){
+//         for (int j = 0; j < n; j++){
+//             for (int k = 0; k < n; k++){
+//                 C[i][j] += A[i][k] * B[k][j];
+//             }
+//         }
+//     }
+//
+//     auto stop = high_resolution_clock::now();
+//     auto duration =
+//         duration_cast<microseconds>(stop - start);
+//
+//
+//     long long memory =
+//         3LL * n * n * sizeof(int);
+//
+//
+//     cout << "n = " << n << endl;
+//
+//     cout << "Matrix multiplication time: "
+//          << duration.count()
+//          << " microseconds" << endl;
+//
+//     cout << "Approximate memory for 3 matrices: "
+//          << memory
+//          << " bytes" << endl;
+//
+//
+//     return 0;
+// }
+
+// S2 P3
+
+// // Recursive Fibonacci
+// long long fibRecursive(int n){
+//     if (n <= 1)
+//         return n;
+//
+//     return fibRecursive(n - 1) + fibRecursive(n - 2);
+// }
+//
+// // Iterative Fibonacci
+// long long fibIterative(int n){
+//     long long a = 0;
+//     long long b = 1;
+//
+//     for (int i = 0; i < n; i++){
+//         long long next = a + b;
+//         a = b;
+//         b = next;
+//     }
+//
+//     return a;
+// }
+//
+// int main(){
+//     int n;
+//
+//     cout << "Enter n: ";
+//     cin >> n;
+//
+//     //Recursive
+//     auto startRecursive =
+//         high_resolution_clock::now();
+//     fibRecursive(n);
+//     auto stopRecursive =
+//         high_resolution_clock::now();
+//     auto recursiveTime =
+//         duration_cast<microseconds>(
+//             stopRecursive - startRecursive
+//         );
+//
+//
+//     //Iterative
+//     auto startIterative =
+//         high_resolution_clock::now();
+//     fibIterative(n);
+//     auto stopIterative =
+//         high_resolution_clock::now();
+//     auto iterativeTime =
+//         duration_cast<microseconds>(
+//             stopIterative - startIterative
+//         );
+//
+//
+//     cout << "n = " << n << endl;
+//
+//     cout << "Recursive Fibonacci: "
+//          << recursiveTime.count()
+//          << " microseconds" << endl;
+//
+//     cout << "Iterative Fibonacci: "
+//          << iterativeTime.count()
+//          << " microseconds" << endl;
+//
+//
+//     return 0;
+// }
+
+
+// S2 P4
+
+struct Node{
+    int data;
+    Node* next;
+};
+
+int main(){
+    int n;
+
+    cout << "Enter n: ";
+    cin >> n;
+
+    //VECTOR
+    vector<int> v;
+
+    auto startVectorInsert = high_resolution_clock::now();
+    for (int i = 0; i < n; i++){
+        v.push_back(i);
+    }
+    auto stopVectorInsert = high_resolution_clock::now();
+    auto vectorInsertTime =
+        duration_cast<microseconds>(
+            stopVectorInsert - startVectorInsert
+        );
+
+
+    int vectorTarget = n - 1;
+
+    auto startVectorSearch = high_resolution_clock::now();
+    for (int i = 0; i < n; i++){
+        if (v[i] == vectorTarget)
+            break;
+    }
+    auto stopVectorSearch = high_resolution_clock::now();
+    auto vectorSearchTime =
+        duration_cast<microseconds>(
+            stopVectorSearch - startVectorSearch
+        );
+
+
+    //RAW DYNAMIC ARRAY
+    int* A = new int[n];
+
+    auto startArrayInsert = high_resolution_clock::now();
+    for (int i = 0; i < n; i++){
+        A[i] = i;
+    }
+    auto stopArrayInsert = high_resolution_clock::now();
+    auto arrayInsertTime =
+        duration_cast<microseconds>(
+            stopArrayInsert - startArrayInsert
+        );
+
+
+    int arrayTarget = n - 1;
+
+    auto startArraySearch = high_resolution_clock::now();
+    for (int i = 0; i < n; i++){
+        if (A[i] == arrayTarget)
+            break;
+    }
+    auto stopArraySearch = high_resolution_clock::now();
+    auto arraySearchTime =
+        duration_cast<microseconds>(
+            stopArraySearch - startArraySearch
+        );
+
+
+    //LINKED LIST
+    Node* head = nullptr;
+    Node* tail = nullptr;
+
+    auto startListInsert = high_resolution_clock::now();
+    for (int i = 0; i < n; i++){
+        Node* newNode = new Node;
+
+        newNode->data = i;
+        newNode->next = nullptr;
+
+        if (head == nullptr){
+            head = newNode;
+            tail = newNode;
+        }
+        else{
+            tail->next = newNode;
+            tail = newNode;
+        }
+    }
+    auto stopListInsert = high_resolution_clock::now();
+    auto listInsertTime =
+        duration_cast<microseconds>(
+            stopListInsert - startListInsert
+        );
+
+    int listTarget = n - 1;
+
+    auto startListSearch = high_resolution_clock::now();
+
+    Node* current = head;
+
+    while (current != nullptr){
+        if (current->data == listTarget)
+            break;
+
+        current = current->next;
+    }
+
+    auto stopListSearch = high_resolution_clock::now();
+    auto listSearchTime =
+        duration_cast<microseconds>(
+            stopListSearch - startListSearch
+        );
+
+
+    long long vectorBytes =
+        v.capacity() * sizeof(int);
+
+    long long arrayBytes =
+        n * sizeof(int);
+
+    long long listBytes =
+        n * sizeof(Node);
+
+
+    cout << "n = " << n << endl;
+
+    cout << "\nVector:" << endl;
+    cout << "Insert time: "
+         << vectorInsertTime.count()
+         << " microseconds" << endl;
+
+    cout << "Search time: "
+         << vectorSearchTime.count()
+         << " microseconds" << endl;
+
+    cout << "Bytes / element: "
+         << sizeof(int)
+         << endl;
+
+    cout << "Total bytes: "
+         << vectorBytes
+         << endl;
+
+
+    cout << "\nRaw Dynamic Array:" << endl;
+    cout << "Insert time: "
+         << arrayInsertTime.count()
+         << " microseconds" << endl;
+
+    cout << "Search time: "
+         << arraySearchTime.count()
+         << " microseconds" << endl;
+
+    cout << "Bytes / element: "
+         << sizeof(int)
+         << endl;
+
+    cout << "Total bytes: "
+         << arrayBytes
+         << endl;
+
+
+    cout << "\nLinked List:" << endl;
+    cout << "Insert time: "
+         << listInsertTime.count()
+         << " microseconds" << endl;
+
+    cout << "Search time: "
+         << listSearchTime.count()
+         << " microseconds" << endl;
+
+    cout << "Bytes / element: "
+         << sizeof(Node)
+         << endl;
+
+    cout << "Total bytes: "
+         << listBytes
+         << endl;
+
+
+    cout << "\nNode size: "
+         << sizeof(Node)
+         << " bytes" << endl;
+
+
+    delete[] A;
+
+    current = head;
+
+    while (current != nullptr){
+        Node* temp = current;
+        current = current->next;
+        delete temp;
+    }
+
+    return 0;
+}
